@@ -5,7 +5,7 @@ var moment = require('moment');
 const {API_KEY} = require('./config/config')
 const Aftership = require('aftership')(API_KEY);
 var app = express();
-app.use(express.static(__dirname + '/public'));
+
 app.use(bodyParser.urlencoded({
     extended: true
 }));
@@ -108,7 +108,7 @@ sleep = async (time) => {
     return new Promise((resolve) => setTimeout(resolve, time));
 }
   
-
+app.use(express.static(__dirname + '/public'));
 const PORT = 3010;
 app.listen(PORT, () => {
     console.log(`Server is listen to ${PORT}`);
